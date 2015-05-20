@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="lab_PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.chortitzer.industria.zebra.domain.lab.LabSemillasEspecies</class>
+        <class>com.chortitzer.industria.zebra.domain.lab.LabSemillasCategorias</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.3.109:5432/industria_lab"/>
+            <property name="javax.persistence.jdbc.password" value="123456"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="bal_PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraImpresion</class>
+        <class>com.chortitzer.industria.zebra.domain.bal.Productox</class>
+        <class>com.chortitzer.industria.zebra.domain.bal.Datosx</class>
+        <class>com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraContenido</class>
+        <class>com.chortitzer.industria.zebra.domain.bal.Formulas</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.3.114:3306/dbp8100?zeroDateTimeBehavior=convertToNull"/>
+            <property name="javax.persistence.jdbc.password" value="delfines"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="delfines"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="fps_PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.chortitzer.industria.zebra.domain.fps.TblFpsLotes</class>
+        <class>com.chortitzer.industria.zebra.domain.fps.TblFpsTambores</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.3.123:5432/caldera"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+        </properties>
+    </persistence-unit>
+</persistence>
