@@ -5,15 +5,10 @@
  */
 package com.chortitzer.industria.zebra;
 
-import com.chortitzer.industria.zebra.domain.fps.TblFpsLotes;
-import com.chortitzer.industria.zebra.domain.fps.TblFpsTambores;
 import com.chortitzer.industria.zebra.util.Utils;
-import java.beans.Beans;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import java.util.Date;
 
 /**
  *
@@ -26,21 +21,7 @@ public class PanelFps extends javax.swing.JPanel {
      */
     public PanelFps() {
         initComponents();
-        if (!Beans.isDesignTime()) {
-            entityManager.getTransaction().begin();
-        }
-
-        tblLotes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        ListSelectionModel selectionModel = tblLotes.getSelectionModel();
-        selectionModel.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                tblFpsTamboresQuery = entityManager.createQuery("SELECT t FROM TblFpsTambores t WHERE t.idLote = :idLote");
-                tblFpsTamboresQuery.setParameter("idLote", tblFpsLotesList.get(tblLotes.getSelectedRow()));
-                tblFpsTamboresList.clear();
-                tblFpsTamboresList.addAll(tblFpsTamboresQuery.getResultList());               
-                btnPrint.setEnabled(true);
-            }
-        });
+        dtpFecha.setDate(new Date());
     }
 
     /**
@@ -51,35 +32,25 @@ public class PanelFps extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        cboNombreComun = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("fps_PU").createEntityManager();
-        tblFpsLotesQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM TblFpsLotes t ORDER BY t.fecha DESC");
-        tblFpsLotesList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(tblFpsLotesQuery.getResultList());
-        tblFpsTamboresQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM TblFpsTambores t");
-        tblFpsTamboresList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(tblFpsTamboresQuery.getResultList());
-        netoTableCellRenderer1 = new com.chortitzer.industria.zebra.util.NetoTableCellRenderer();
         btnCancel = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblLotes = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblTambores = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
-
-        cboNombreComun.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cargando..." }));
-        cboNombreComun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboNombreComunActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Nombre Comun");
-
-        netoTableCellRenderer1.setText("netoTableCellRenderer1");
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtCantidad = new org.jdesktop.swingx.JXTextField();
+        dtpFecha = new org.jdesktop.swingx.JXDatePicker();
+        txtLote = new org.jdesktop.swingx.JXTextField();
+        txtNombre = new org.jdesktop.swingx.JXTextField();
+        txtCodigo = new org.jdesktop.swingx.JXTextField();
+        txtOC = new org.jdesktop.swingx.JXTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtNeto = new org.jdesktop.swingx.JXTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtTara = new org.jdesktop.swingx.JXTextField();
 
         btnCancel.setText("CANCELAR");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -90,58 +61,42 @@ public class PanelFps extends javax.swing.JPanel {
 
         btnPrint.setBackground(new java.awt.Color(204, 255, 204));
         btnPrint.setText("IMPRIMIR");
-        btnPrint.setEnabled(false);
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Tambores");
+        jLabel9.setText("Cantidad Tambores:");
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFpsLotesList, tblLotes);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idFabrica}"));
-        columnBinding.setColumnName("Nro. Lote");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fecha}"));
-        columnBinding.setColumnName("Fecha");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding.setEditable(false);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        tblLotes.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblLotesPropertyChange(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblLotes);
+        jLabel10.setText("Lote N°:");
 
-        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFpsTamboresList, tblTambores);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idFabrica}"));
-        columnBinding.setColumnName("Id Fabrica");
-        columnBinding.setColumnClass(Integer.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${pesoBruto}"));
-        columnBinding.setColumnName("Peso Bruto");
-        columnBinding.setColumnClass(Double.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${pesoTara}"));
-        columnBinding.setColumnName("Peso Tara");
-        columnBinding.setColumnClass(Double.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${pesoTara}"));
-        columnBinding.setColumnName("Peso Neto");
-        columnBinding.setColumnClass(Double.class);
-        columnBinding.setEditable(false);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        jScrollPane2.setViewportView(tblTambores);
-        if (tblTambores.getColumnModel().getColumnCount() > 0) {
-            tblTambores.getColumnModel().getColumn(3).setCellRenderer(netoTableCellRenderer1);
-        }
+        jLabel11.setText("Fecha:");
 
-        jLabel10.setText("Lote");
+        jLabel12.setText("Nombre del Cliente:");
+
+        jLabel13.setText("Codigo del Cliente:");
+
+        jLabel14.setText("Orden de Compra N°:");
+
+        txtCantidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtCantidad.setText("10");
+
+        txtLote.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        txtCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        txtOC.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jLabel15.setText("Peso Neto (Kg):");
+
+        txtNeto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtNeto.setText("190");
+
+        jLabel16.setText("Peso Tara (Kg):");
+
+        txtTara.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtTara.setText("18.7");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,43 +104,86 @@ public class PanelFps extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtOC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dtpFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(441, Short.MAX_VALUE)))
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTara, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dtpFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(451, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-
-        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -197,84 +195,100 @@ public class PanelFps extends javax.swing.JPanel {
         //System.out.println(getZpl());
     }//GEN-LAST:event_btnPrintActionPerformed
 
-    private void cboNombreComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNombreComunActionPerformed
-        try {
-
-        } catch (Exception e) {
-            Utils.messageBox(e.getStackTrace().toString());
-        }
-    }//GEN-LAST:event_cboNombreComunActionPerformed
-
-    private void tblLotesPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblLotesPropertyChange
-
-
-    }//GEN-LAST:event_tblLotesPropertyChange
-
     private String getZpl() {
-            String result = "";            
-            TblFpsLotes lote = tblFpsLotesList.get(tblLotes.getSelectedRow());
-            TblFpsTambores tambor;
-            String dLote = String.valueOf(lote.getIdFabrica());            
-            SimpleDateFormat dateF = new SimpleDateFormat("dd/MM/yyyy");
-            String dFecha = dateF.format(lote.getFecha());
-            String dObs = lote.getObs();
-            if(dObs==null){                
-                dObs = "";
-            }
+        String result = "";
 
-            int nRow = tblFpsTamboresList.size();
-            for (int i = 0 ; i < nRow ; i++){    
-            //int i = 0;
-                tambor = tblFpsTamboresList.get(i);
-                    String dIdFabrica = String.valueOf(tambor.getIdFabrica());
-                    String dBruto = getAlignedNumber(tambor.getPesoBruto());
-                    String dTara = getAlignedNumber(tambor.getPesoTara());
-                    String dNeto = getAlignedNumber(tambor.getPesoBruto()-tambor.getPesoTara());
-                    
-                    result += "^XA" +                            
-                            "^PW799" +
-                            "^FT64,1010^XGE:LC100.GRF,1,1^FS" +
-                            "^FT94,845^A0B,51,50^FH\\^FDAceite Esencia de Palo Santo^FS" +
-                            "^FT158,845^A0B,51,50^FH\\^FDGuaiacwood Oil^FS" +                            
-                            "^FT285,1100^AAB,44,24^FH\\^FDFecha / Date: "+dFecha+"^FS" +
-                            "^FT330,1100^AAB,44,24^FH\\^FDLote / Batch: "+dLote+"^FS" +
-                            "^FT375,1100^AAB,44,24^FH\\^FDEnvase Nro. / Container Nr.: "+dLote+"-"+dIdFabrica+"^FS" +
-                            "^FT420,1100^AAB,44,24^FH\\^FDPeso Bruto / Gross weight: "+dBruto+" Kg^FS" +
-                            "^FT465,1100^AAB,44,24^FH\\^FDPeso Tara / Tare weight:   "+dTara+" Kg^FS" +
-                            "^FT510,1100^AAB,44,24^FH\\^FDPeso Neto / Net weight:    "+dNeto+" Kg^FS" +
-                            "^FT645,1100^AAB,44,24^FB1020,2,0,L^FH\\^FD"+dObs+"^FS" +
-                            //"^FT600,1100^AAB,44,24^FH\\^FDROBERTET INC. - PO# 103759^FS" +
-                            "^FT685,885^A0B,28,28^FB821,1,0,R^FH\\^FDHandling instructions: Dry Charge – Room Temperature^FS" +
-                            "^FT719,885^A0B,28,28^FB821,1,0,R^FH\\^FDProducido por / Manufactured by: COOPERATIVA CHORTITZER LTDA.^FS" +
-                            "^FT753,885^A0B,28,28^FB821,1,0,R^FH\\^FDPais de origen / Country of origin: PARAGUAY^FS" +
-                            "^PQ1,0,1,Y^XZ";                
-            }
-            return result;
+        SimpleDateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
+        String dFecha = dateF.format(dtpFecha.getDate());
+
+        /*result += "^XA" +
+         "^PW799" +
+         "^FT64,1010^XGE:LC100.GRF,1,1^FS" +
+         "^FT94,845^A0B,51,50^FH\\^FDAceite Esencia de Palo Santo^FS" +
+         "^FT158,845^A0B,51,50^FH\\^FDGuaiacwood Oil^FS" +
+         "^FT285,1100^AAB,44,24^FH\\^FDFecha / Date: "+dFecha+"^FS" +
+         "^FT330,1100^AAB,44,24^FH\\^FDLote / Batch: "+dLote+"^FS" +
+         "^FT375,1100^AAB,44,24^FH\\^FDEnvase Nro. / Container Nr.: "+dLote+"-"+dIdFabrica+"^FS" +
+         "^FT420,1100^AAB,44,24^FH\\^FDPeso Bruto / Gross weight: "+dBruto+" Kg^FS" +
+         "^FT465,1100^AAB,44,24^FH\\^FDPeso Tara / Tare weight:   "+dTara+" Kg^FS" +
+         "^FT510,1100^AAB,44,24^FH\\^FDPeso Neto / Net weight:    "+dNeto+" Kg^FS" +
+         "^FT645,1100^AAB,44,24^FB1020,2,0,L^FH\\^FD"+dObs+"^FS" +
+         //"^FT600,1100^AAB,44,24^FH\\^FDROBERTET INC. - PO# 103759^FS" +
+         "^FT685,885^A0B,28,28^FB821,1,0,R^FH\\^FDHandling instructions: Dry Charge – Room Temperature^FS" +
+         "^FT719,885^A0B,28,28^FB821,1,0,R^FH\\^FDProducido por / Manufactured by: COOPERATIVA CHORTITZER LTDA.^FS" +
+         "^FT753,885^A0B,28,28^FB821,1,0,R^FH\\^FDPais de origen / Country of origin: PARAGUAY^FS" +
+         "^PQ1,0,1,Y^XZ";
+         */
+        String sNombre = "";
+        if (!txtNombre.getText().equals("")) {
+            sNombre = "Destination: " + txtNombre.getText();
+        }
+
+        String sCode = "";
+        if (!txtCodigo.getText().equals("")) {
+            sCode = "Costumer Code: " + txtCodigo.getText();
+        }
+
+        String sOC = "";
+        if (!txtOC.getText().equals("")) {
+            sOC = "Purchase Order Nr.: " + txtOC.getText();
+        }
+
+        result += "^XA"
+                + "^PW799"
+                + "^FT300,200^XGE:CCLOGO20.GRF,1,1^FS"
+                + "^FT60,260^A0N,51,50^FB679,1,0,C^FH\\^FDAceite Esencial de Palo Santo^FS"
+                + "^FT60,355^A0N,81,80^FB679,1,0,C^FH\\^FDGuaiacwood Oil^FS"
+                + "^FT60,400^A0N,41,40^FH\\^FD "
+                + "^FT60,450^A0N,51,50^FH\\^FDLot Nr.:^FS"
+                + "^FT400,450^A0N,51,50^FB320,1,0,R^FH\\^FD" + txtLote.getText() + "^FS"
+                + "^FT60,510^A0N,51,50^FH\\^FDContainer Nr.:^FS"
+                + "^FT400,510^A0N,51,50^FB320,1,0,R^FH\\^FD001^SFddd,1^FS"
+                + "^FT60,570^A0N,51,50^FH\\^FDProduction Date:^FS"
+                + "^FT400,570^A0N,51,50^FB320,1,0,R^FH\\^FD" + dFecha + "^FS"
+                + "^FT60,630^A0N,51,50^FH\\^FDGross weight:^FS"
+                + "^FT400,630^A0N,51,50^FB320,1,0,R^FH\\^FD" + getAlignedNumber(Double.parseDouble(txtNeto.getText()) + Double.parseDouble(txtTara.getText())) + " Kg^FS"
+                + "^FT60,690^A0N,51,50^FH\\^FDTare weight:^FS"
+                + "^FT400,690^A0N,51,50^FB320,1,0,R^FH\\^FD" + getAlignedNumber(Double.parseDouble(txtTara.getText())) + " Kg^FS"
+                + "^FT60,750^A0N,51,50^FH\\^FDNet weight:^FS"
+                + "^FT400,750^A0N,51,50^FB320,1,0,R^FH\\^FD" + getAlignedNumber(Double.parseDouble(txtNeto.getText())) + " Kg^FS"
+                + "^FT60,800^A0N,41,40^FH\\^FD "
+                + "^FT60,850^A0N,41,40^FH\\^FD" + sNombre + "^FS"
+                + "^FT60,900^A0N,41,40^FH\\^FD" + sCode + "^FS"
+                + "^FT60,950^A0N,41,40^FH\\^FD" + sOC + "^FS"
+                + "^FT60,1005^A0N,28,28^FH\\^FDCAS: 8016-23-7 /\\ EINECS: 289-532-8 /\\ FEMA: 2534^FS"
+                + "^FT60,1035^A0N,28,28^FH\\^FDHandling instructions: Dry Charge -/- Room Temperature^FS"
+                + "^FT60,1065^A0N,28,28^FH\\^FDManufactured by: COOPERATIVA CHORTITZER LTDA.^FS"
+                + "^FT60,1095^A0N,28,28^FH\\^FDCountry of origin: PARAGUAY^FS"
+                + "^PQ" + txtCantidad.getText() + ",1,0,Y^XZ";
+
+        return result;
     }
-    
-    private String getAlignedNumber(double num){
-        DecimalFormat df = new DecimalFormat("##0.0");
-        String res = df.format(num);        
-        return "                   ".substring(0, 5-res.length())+res;
+
+    private String getAlignedNumber(double num) {
+        DecimalFormat df = new DecimalFormat("##0.00");
+        String res = df.format(num);
+        return "                   ".substring(0, 6 - res.length()) + res;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JComboBox cboNombreComun;
-    private javax.persistence.EntityManager entityManager;
+    private org.jdesktop.swingx.JXDatePicker dtpFecha;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private com.chortitzer.industria.zebra.util.NetoTableCellRenderer netoTableCellRenderer1;
-    private java.util.List<com.chortitzer.industria.zebra.domain.fps.TblFpsLotes> tblFpsLotesList;
-    private javax.persistence.Query tblFpsLotesQuery;
-    private java.util.List<com.chortitzer.industria.zebra.domain.fps.TblFpsTambores> tblFpsTamboresList;
-    private javax.persistence.Query tblFpsTamboresQuery;
-    private javax.swing.JTable tblLotes;
-    private javax.swing.JTable tblTambores;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private org.jdesktop.swingx.JXTextField txtCantidad;
+    private org.jdesktop.swingx.JXTextField txtCodigo;
+    private org.jdesktop.swingx.JXTextField txtLote;
+    private org.jdesktop.swingx.JXTextField txtNeto;
+    private org.jdesktop.swingx.JXTextField txtNombre;
+    private org.jdesktop.swingx.JXTextField txtOC;
+    private org.jdesktop.swingx.JXTextField txtTara;
     // End of variables declaration//GEN-END:variables
 }

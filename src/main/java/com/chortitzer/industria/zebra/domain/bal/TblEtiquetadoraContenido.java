@@ -64,7 +64,7 @@ public class TblEtiquetadoraContenido implements Serializable {
     private String modoDeUso;
     @Basic(optional = false)
     @Column(name = "registro_mag")
-    private int registroMag;
+    private String registroMag;
     @Basic(optional = false)
     @Column(name = "humedad")
     private int humedad;
@@ -137,7 +137,7 @@ public class TblEtiquetadoraContenido implements Serializable {
         this.idFormula = idFormula;
     }
 
-    public TblEtiquetadoraContenido(Integer idFormula, String modoDeUso, int registroMag, int humedad, int proteina, int energiaDigestible, int grasa, int fda, int mineralesTotales, int calcio, int fosforo, int vitA, int vitD, int vitE, String animalDestino, String categoria, String nombreCompleto) {
+    public TblEtiquetadoraContenido(Integer idFormula, String modoDeUso, String registroMag, int humedad, int proteina, int energiaDigestible, int grasa, int fda, int mineralesTotales, int calcio, int fosforo, int vitA, int vitD, int vitE, String animalDestino, String categoria, String nombreCompleto) {
         this.idFormula = idFormula;
         this.modoDeUso = modoDeUso;
         this.registroMag = registroMag;
@@ -173,11 +173,11 @@ public class TblEtiquetadoraContenido implements Serializable {
         this.modoDeUso = modoDeUso;
     }
 
-    public int getRegistroMag() {
+    public String getRegistroMag() {
         return registroMag;
     }
 
-    public void setRegistroMag(int registroMag) {
+    public void setRegistroMag(String registroMag) {
         this.registroMag = registroMag;
     }
 

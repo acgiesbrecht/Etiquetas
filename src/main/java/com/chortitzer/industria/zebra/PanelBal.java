@@ -491,7 +491,7 @@ public class PanelBal extends javax.swing.JPanel {
 
     public String getZplBalanceados() {
         String producto = cboProducto.getSelectedItem().toString();
-        
+
         DecimalFormat myFormatterLote = new DecimalFormat("000");
         String lote = myFormatterLote.format(Integer.parseInt(txtLote.getText()));
         String linea = cboLinea.getSelectedItem().toString();
@@ -509,8 +509,11 @@ public class PanelBal extends javax.swing.JPanel {
             pesoNeto = peso;
         }
 
-        senacsaReg = txtSenacsaReg.getText();
+        senacsaReg = "SENACSA Reg. Nro.: " + txtSenacsaReg.getText();
 
+        if (txtSenacsaReg.getText().equals("XXX")) {
+            senacsaReg = "";
+        }
         /*
          15x10cm
          -------------------------------------------------
@@ -595,7 +598,7 @@ public class PanelBal extends javax.swing.JPanel {
                 + "^FT726,1115^A0B,28,28^FH\\^FDLote: " + lote + "  Linea: " + linea + "  Turno: " + turno + "^FS"
                 + "^FT760,1115^A0B,28,28^FH\\^FDSecuencia: " + fechaPrint + "0001^SFAAAAAAAAAAAAAAAAAAAAAdddd,1^FS"
                 + "^FT685,767^A0B,51,50^FB374,1,0,C^FH\\^FD" + pesoNeto + "^FS"
-                + "^FT730,767^A0B,20,19^FB374,1,0,C^FH\\^FDSENACSA Reg. Nro.: " + senacsaReg + "^FS"
+                + "^FT730,767^A0B,20,19^FB374,1,0,C^FH\\^FD" + senacsaReg + "^FS"
                 + "^FT754,767^A0B,20,19^FB374,1,0,C^FH\\^FDRegente Tecnico MAG Nro.: 1979^FS"
                 + "^FT643,370^A0B,24,23^FB320,1,0,R^FH\\^FDProducido por ^FS"
                 + "^FT671,370^A0B,24,23^FB320,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
@@ -628,7 +631,9 @@ public class PanelBal extends javax.swing.JPanel {
         }
 
         senacsaReg = txtSenacsaReg.getText();
-
+        if (txtSenacsaReg.getText().equals("XXX")) {
+            senacsaReg = "";
+        }
         String base = "^XA"
                 + "^PW799"
                 + "^CI27"
@@ -638,7 +643,7 @@ public class PanelBal extends javax.swing.JPanel {
                 + "^FO15,390^GB775,0,2^FS" // 1era horiz
                 + "^FO15,940^GB775,0,2^FS" // 2da horiz
                 + "^FO412,390^GB0,710,2^FS" // 1era vertical
-                //+ "^FO610,30^GB0,1100,2^FS" // 2da horiz                
+                //+ "^FO610,30^GB0,1100,2^FS" // 2da horiz
                 //+ "^FO610,393^GB165,0,2^FS"
                 //+ "^FO610,767^GB165,0,2^FS"
                 //+ "^FO25,970^XGE:LC100.GRF,1,1^FS"
@@ -710,11 +715,11 @@ public class PanelBal extends javax.swing.JPanel {
                 //+ "^FT597,831^A0B,39,38^FB200,1,0,R^FH\\^FD" + edBS + "^FS"
                 //+ "^FT561,440^A0B,16,15^FH\\^FD*Calculo Estimativa ED:^FS"
                 //+ "^FT579,440^A0B,16,15^FH\\^FDNDT=PB+(EE*2,25)+ENN^FS"
-                //+ "^FT597,440^A0B,16,15^FH\\^FDED(Kcal/Kg)=NDT*4.409^FS"                
+                //+ "^FT597,440^A0B,16,15^FH\\^FDED(Kcal/Kg)=NDT*4.409^FS"
 
                 //+ "^FT685,767^A0B,51,50^FB374,1,0,C^FH\\^FD" + pesoNeto + "^FS"
                 //+ "^FT730,767^A0B,20,19^FB374,1,0,C^FH\\^FDSENACSA Reg. Nro.: " + senacsaReg + "^FS"
-                //+ "^FT754,767^A0B,20,19^FB374,1,0,C^FH\\^FDRegente Tecnico MAG Nro.: 1979^FS"               
+                //+ "^FT754,767^A0B,20,19^FB374,1,0,C^FH\\^FDRegente Tecnico MAG Nro.: 1979^FS"
 
                 + "^FT422,740^A0N,51,50^FB374,1,0,C^FH\\^FD" + pesoNeto + "^FS"
                 + "^FT422,792^A0N,20,19^FB374,1,0,C^FH\\^FDSENACSA Reg. Nro. Prod.: " + senacsaReg + "^FS"
@@ -746,7 +751,6 @@ public class PanelBal extends javax.swing.JPanel {
             return null;
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
