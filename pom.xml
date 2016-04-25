@@ -4,7 +4,7 @@
 
     <groupId>com.chortitzer.zebra</groupId>
     <artifactId>Etiquetas</artifactId>
-    <version>2.2</version>
+    <version>2.3</version>
     <packaging>jar</packaging>
 
     <name>Etiquetas</name>
@@ -14,7 +14,7 @@
     </properties>
     <build>
         <plugins>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.3</version>
@@ -73,10 +73,47 @@
                     <storepass>123456</storepass>
                     <keypass>123456</keypass>
                 </configuration>
+            </plugin>-->
+            <plugin>
+                <groupId>org.icestuff</groupId>
+                <artifactId>getdown-maven-plugin</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>updates</goal>
+                        </goals>
+                        <configuration>
+                            <appbase>http://192.168.1.10/industria/java/zebra</appbase>
+                            <libPath>lib</libPath>
+                            <mainClass>com.chortitzer.industria.zebra.FormMdi</mainClass>
+                            <outputJarVersions>true</outputJarVersions>
+                            <verbose>true</verbose>
+                            <ui>
+                                <name>Etiquetas 2.3</name>
+                                <progress>80, 244, 196, 11</progress>
+                                <progressText>FFFFFF</progressText>
+                                <statusText>FFFFFF</statusText>
+                                <status>20, 170, 316, 64</status>
+                                <textShadow>999999</textShadow>
+                            </ui>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
+    <pluginRepositories>
+        <pluginRepository>
+            <id>getdown-maven-plugin-mvn-repo</id>
+            <url>https://raw.github.com/rockfireredmoon/getdown-maven-plugin/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

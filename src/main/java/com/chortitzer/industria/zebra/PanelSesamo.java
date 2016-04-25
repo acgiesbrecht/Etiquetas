@@ -68,7 +68,7 @@ public class PanelSesamo extends javax.swing.JPanel {
 
         txtCantidad.setText("550");
 
-        cboDesecante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Glifosato", "Diquat", "Paraquat" }));
+        cboDesecante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Glifosato", "Diquat", "Paraquat" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -137,7 +137,7 @@ public class PanelSesamo extends javax.swing.JPanel {
 
     private String getZpl() {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        return "^XA"
+        String response = "^XA"
                 + "^PW799"
                 + "^FT64,256^XGE:CCLOGO20.GRF,1,1^FS"
                 + "^FO27,25^GB746,1100,1^FS"
@@ -146,14 +146,18 @@ public class PanelSesamo extends javax.swing.JPanel {
                 + "^FT87,380^A0N,28,28^FH\\^FDLote / Bolsa:^FS"
                 + "^FT87,520^A0N,135,139^FH\\^FD" + String.format("%04d", Integer.valueOf(txtLote.getText())) + "-001^SFAAAAAddd,1^FS"
                 + "^FT87,590^A0N,28,28^FH\\^FDFecha de Elaboraciosn:^FS"
-                + "^FT87,730^A0N,135,139^FH\\^FD" + df.format(dtpFecha.getDate()) + "^FS"
-                + "^FT87,800^A0N,28,28^FH\\^FDDesecante empleado:^FS"
-                + "^FT87,940^A0N,135,139^FH\\^FD" + cboDesecante.getSelectedItem().toString() + "^FS"
-                //+ "^FT87,980^A0N,58,59^FH\\^FDBolsa Nro.: 001^SFAAAAAAAAAAAAAddd,1^FS"
-                + "^FT5,1034^A0N,23,24^FB799,1,0,C^FH\\^FDElaborado por Cooperativa Chortitzer Ltda.^FS"
+                + "^FT87,730^A0N,135,139^FH\\^FD" + df.format(dtpFecha.getDate()) + "^FS";
+        if (!cboDesecante.getSelectedItem().toString().equals("Ninguno")) {
+            response += "^FT87,800^A0N,28,28^FH\\^FDDesecante empleado:^FS"
+                    + "^FT87,940^A0N,135,139^FH\\^FD" + cboDesecante.getSelectedItem().toString() + "^FS";
+        }
+        //+ "^FT87,980^A0N,58,59^FH\\^FDBolsa Nro.: 001^SFAAAAAAAAAAAAAddd,1^FS"
+        response += "^FT5,1034^A0N,23,24^FB799,1,0,C^FH\\^FDElaborado por Cooperativa Chortitzer Ltda.^FS"
                 + "^FT5,1062^A0N,23,24^FB799,1,0,C^FH\\^FDTel. (0492) 418 244^FS"
                 + "^FT5,1090^A0N,23,24^FB799,1,0,C^FH\\^FDAvda. Central - Loma Plata - -Dpto. Boqueron - PY^FS"
                 + "^PQ" + txtCantidad.getText() + ",1,0,Y^XZ";
+
+        return response;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
