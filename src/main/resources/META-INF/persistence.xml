@@ -13,13 +13,12 @@
     </persistence-unit>
     <persistence-unit name="bal_PU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraImpresion</class>
         <class>com.chortitzer.industria.zebra.domain.bal.Productox</class>
         <class>com.chortitzer.industria.zebra.domain.bal.Datosx</class>
         <class>com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraContenido</class>
         <class>com.chortitzer.industria.zebra.domain.bal.Formulas</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.3.114:3306/dbp8100?zeroDateTimeBehavior=convertToNull"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.3.114:3306/dbcp8100?zeroDateTimeBehavior=convertToNull"/>
             <property name="javax.persistence.jdbc.password" value="delfines"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="delfines"/>

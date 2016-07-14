@@ -10,7 +10,6 @@ import ca.odell.glazedlists.swing.AutoCompleteSupport;
 import com.chortitzer.industria.zebra.domain.bal.Formulas;
 import com.chortitzer.industria.zebra.domain.bal.Productox;
 import com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraContenido;
-import com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraImpresion;
 import com.chortitzer.industria.zebra.util.Utils;
 import com.google.common.base.Joiner;
 import java.text.DateFormat;
@@ -363,7 +362,7 @@ public class PanelBal extends javax.swing.JPanel {
 
                 String jpql = "select max(i.lote) from TblEtiquetadoraImpresion i where FUNC('YEAR', i.fechahora) = " + ano + " and i.idFormula = " + formulaActual.getNroID().toString();
                 // System.out.println(jpql);
-                Object res = em.createQuery(jpql).getSingleResult();
+                Object res = null;//em.createQuery(jpql).getSingleResult();
                 int lastLote = 0;
                 if (res != null) {
                     lastLote = (Integer) res;
@@ -473,7 +472,7 @@ public class PanelBal extends javax.swing.JPanel {
             Utils.rawPrint(getZplSales());
         }
 
-        TblEtiquetadoraImpresion impresion = new TblEtiquetadoraImpresion();
+        /*        TblEtiquetadoraImpresion impresion = new TblEtiquetadoraImpresion();
 
         impresion.setFechahora(dtpFechaElab.getDate());
         impresion.setIdFormula(formulaActual.getNroID());
@@ -482,7 +481,6 @@ public class PanelBal extends javax.swing.JPanel {
          em.getTransaction().begin();
          em.persist(impresion);
          em.getTransaction().commit();*/
-
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void txtLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoteActionPerformed

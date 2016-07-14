@@ -13,9 +13,9 @@ import java.util.Calendar;
  *
  * @author Industria
  */
-public class PanelSesamo extends javax.swing.JPanel {
+public class PanelMung extends javax.swing.JPanel {
 
-    public PanelSesamo() {
+    public PanelMung() {
         initComponents();
         Calendar calendar = Calendar.getInstance();
         dtpFecha.setDate(calendar.getTime());
@@ -36,10 +36,8 @@ public class PanelSesamo extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         dtpFecha = new org.jdesktop.swingx.JXDatePicker();
         txtLote = new org.jdesktop.swingx.JXTextField();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtCantidad = new org.jdesktop.swingx.JXTextField();
-        cboDesecante = new javax.swing.JComboBox();
         btnPrintSmall = new javax.swing.JButton();
 
         btnCancel.setText("CANCELAR");
@@ -63,13 +61,9 @@ public class PanelSesamo extends javax.swing.JPanel {
 
         txtLote.setText("1");
 
-        jLabel11.setText("Desecante:");
-
         jLabel12.setText("Lote:");
 
         txtCantidad.setText("550");
-
-        cboDesecante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Glifosato", "Diquat", "Paraquat" }));
 
         btnPrintSmall.setBackground(new java.awt.Color(204, 255, 204));
         btnPrintSmall.setText("IMPRIMIR PRQUEÑO");
@@ -95,13 +89,9 @@ public class PanelSesamo extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboDesecante, 0, 123, Short.MAX_VALUE)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCancel)
                     .addComponent(btnPrint)
                     .addComponent(btnPrintSmall))
@@ -118,21 +108,17 @@ public class PanelSesamo extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboDesecante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrintSmall, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -156,11 +142,11 @@ public class PanelSesamo extends javax.swing.JPanel {
                 + //"^FT64,256^XGE:CCLOGO20.GRF,1,1^FS" +
                 //"^FO27,25^GB746,1100,1^FS" +
                 "^FT590,60^A0N,30,31^FB220,1,0,L^FH\\^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
-                + "^FT590,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "001^SFAAAAAAAddd,3" + "^FS"
+                + "^FT590,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "0001^SFAAAAAAAdddd,3" + "^FS"
                 + "^FT305,60^A0N,30,31^FB220,1,0,L^FH\\^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
-                + "^FT305,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "002^SFAAAAAAAddd,3" + "^FS"
+                + "^FT305,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "0002^SFAAAAAAAdddd,3" + "^FS"
                 + "^FT15,60^A0N,30,31^FB220,1,0,L^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
-                + "^FT15,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "003^SFAAAAAAAddd,3" + "^FS"
+                + "^FT15,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "0003^SFAAAAAAAdddd,3" + "^FS"
                 + "^PQ" + String.valueOf(Math.round(Integer.valueOf(txtCantidad.getText()) / 3)) + ",1,0,Y^XZ";
     }
 
@@ -170,16 +156,12 @@ public class PanelSesamo extends javax.swing.JPanel {
                 + "^PW799"
                 + "^FT64,256^XGE:CCLOGO20.GRF,1,1^FS"
                 + "^FO27,25^GB746,1100,1^FS"
-                + "^FT321,157^A0N,68,69^FB379,1,0,C^FH\\^FDSESAMO^FS"
-                + "^FT321,242^A0N,68,69^FB379,1,0,C^FH\\^FDCHORTITZER^FS"
+                + "^FT321,157^A0N,68,69^FB379,1,0,C^FH\\^FDPOROTO^FS"
+                + "^FT321,242^A0N,68,69^FB379,1,0,C^FH\\^FDMUNG^FS"
                 + "^FT87,380^A0N,28,28^FH\\^FDLote / Bolsa:^FS"
-                + "^FT87,520^A0N,135,139^FH\\^FD" + String.format("%04d", Integer.valueOf(txtLote.getText())) + "-001^SFAAAAAddd,1^FS"
+                + "^FT87,520^A0N,135,139^FH\\^FD" + String.format("%04d", Integer.valueOf(txtLote.getText())) + "-0001^SFAAAAAdddd,1^FS"
                 + "^FT87,590^A0N,28,28^FH\\^FDFecha de Elaboraciosn:^FS"
                 + "^FT87,730^A0N,135,139^FH\\^FD" + df.format(dtpFecha.getDate()) + "^FS";
-        if (!cboDesecante.getSelectedItem().toString().equals("Ninguno")) {
-            response += "^FT87,800^A0N,28,28^FH\\^FDDesecante empleado:^FS"
-                    + "^FT87,940^A0N,135,139^FH\\^FD" + cboDesecante.getSelectedItem().toString() + "^FS";
-        }
         //+ "^FT87,980^A0N,58,59^FH\\^FDBolsa Nro.: 001^SFAAAAAAAAAAAAAddd,1^FS"
         response += "^FT5,1034^A0N,23,24^FB799,1,0,C^FH\\^FDElaborado por Cooperativa Chortitzer Ltda.^FS"
                 + "^FT5,1062^A0N,23,24^FB799,1,0,C^FH\\^FDTel. (0492) 418 244^FS"
@@ -193,10 +175,8 @@ public class PanelSesamo extends javax.swing.JPanel {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnPrintSmall;
-    private javax.swing.JComboBox cboDesecante;
     private org.jdesktop.swingx.JXDatePicker dtpFecha;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel9;
     private org.jdesktop.swingx.JXTextField txtCantidad;

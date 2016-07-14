@@ -40,6 +40,8 @@ public class FormMdi extends javax.swing.JFrame {
         mnuFps = new javax.swing.JMenuItem();
         mnuSya = new javax.swing.JMenuItem();
         mnuSesamo = new javax.swing.JMenuItem();
+        mnuMungR = new javax.swing.JMenuItem();
+        mnuMungP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,6 +113,32 @@ public class FormMdi extends javax.swing.JFrame {
         });
         mnuMain.add(mnuSesamo);
 
+        mnuMungR.setText("Mung Recepcion");
+        mnuMungR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuMungRMouseClicked(evt);
+            }
+        });
+        mnuMungR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMungRActionPerformed(evt);
+            }
+        });
+        mnuMain.add(mnuMungR);
+
+        mnuMungP.setText("Mung Produccion");
+        mnuMungP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuMungPMouseClicked(evt);
+            }
+        });
+        mnuMungP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMungPActionPerformed(evt);
+            }
+        });
+        mnuMain.add(mnuMungP);
+
         menuBar.add(mnuMain);
 
         setJMenuBar(menuBar);
@@ -172,6 +200,24 @@ public class FormMdi extends javax.swing.JFrame {
         addFrame(panelSesamo, "Sesamo");
     }//GEN-LAST:event_mnuSesamoActionPerformed
 
+    private void mnuMungRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuMungRMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuMungRMouseClicked
+
+    private void mnuMungRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMungRActionPerformed
+        PanelMungRecepcion panelMung = new PanelMungRecepcion();
+        addFrame(panelMung, "Mung Recepcion");
+    }//GEN-LAST:event_mnuMungRActionPerformed
+
+    private void mnuMungPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuMungPMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuMungPMouseClicked
+
+    private void mnuMungPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMungPActionPerformed
+        PanelMung panelMung = new PanelMung();
+        addFrame(panelMung, "Mung");
+    }//GEN-LAST:event_mnuMungPActionPerformed
+
     public void addFrame(JPanel panel, String title) {
         try {
             JInternalFrame[] children = desktopPane.getAllFrames();
@@ -191,7 +237,7 @@ public class FormMdi extends javax.swing.JFrame {
             frame.setMaximum(true);
 
 //checking to see if the child form already exist
-          /*
+            /*
              }*/
         } catch (Exception e) {
             e.printStackTrace();
@@ -225,6 +271,8 @@ public class FormMdi extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuDet;
     private javax.swing.JMenuItem mnuFps;
     private javax.swing.JMenu mnuMain;
+    private javax.swing.JMenuItem mnuMungP;
+    private javax.swing.JMenuItem mnuMungR;
     private javax.swing.JMenuItem mnuSesamo;
     private javax.swing.JMenuItem mnuSya;
     // End of variables declaration//GEN-END:variables
