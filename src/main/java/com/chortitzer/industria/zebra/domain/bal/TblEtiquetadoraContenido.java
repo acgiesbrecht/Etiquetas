@@ -126,6 +126,8 @@ public class TblEtiquetadoraContenido implements Serializable {
     private Integer y;
     @Column(name = "Fe")
     private Integer fe;
+    @Column(name = "Cr")
+    private Integer Cr;
     @Basic(optional = false)
     @Column(name = "nombre_completo")
     private String nombreCompleto;
@@ -404,6 +406,20 @@ public class TblEtiquetadoraContenido implements Serializable {
     @Override
     public String toString() {
         return "com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraContenido[ idFormula=" + idFormula + " ]";
+    }
+
+    /**
+     * @return the Cr
+     */
+    public Integer getCr() {
+        return Cr;
+    }
+
+    /**
+     * @param Cr the Cr to set
+     */
+    public void setCr(Integer Cr) {
+        this.Cr = Cr;
     }
     
 }

@@ -39,6 +39,7 @@ public class FormMdi extends javax.swing.JFrame {
         mnuDet = new javax.swing.JMenuItem();
         mnuFps = new javax.swing.JMenuItem();
         mnuSya = new javax.swing.JMenuItem();
+        mnuSya1 = new javax.swing.JMenuItem();
         mnuSesamo = new javax.swing.JMenuItem();
         mnuMungR = new javax.swing.JMenuItem();
         mnuMungP = new javax.swing.JMenuItem();
@@ -99,6 +100,14 @@ public class FormMdi extends javax.swing.JFrame {
             }
         });
         mnuMain.add(mnuSya);
+
+        mnuSya1.setText("Semillas Mani Fundacion");
+        mnuSya1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSya1ActionPerformed(evt);
+            }
+        });
+        mnuMain.add(mnuSya1);
 
         mnuSesamo.setText("Sesamo");
         mnuSesamo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -218,6 +227,11 @@ public class FormMdi extends javax.swing.JFrame {
         addFrame(panelMung, "Mung");
     }//GEN-LAST:event_mnuMungPActionPerformed
 
+    private void mnuSya1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSya1ActionPerformed
+        PanelSemillaManiFundacion panel = new PanelSemillaManiFundacion();
+        addFrame(panel, "Semilla Mani Fundacion");
+    }//GEN-LAST:event_mnuSya1ActionPerformed
+
     public void addFrame(JPanel panel, String title) {
         try {
             JInternalFrame[] children = desktopPane.getAllFrames();
@@ -275,6 +289,7 @@ public class FormMdi extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuMungR;
     private javax.swing.JMenuItem mnuSesamo;
     private javax.swing.JMenuItem mnuSya;
+    private javax.swing.JMenuItem mnuSya1;
     // End of variables declaration//GEN-END:variables
 
 }

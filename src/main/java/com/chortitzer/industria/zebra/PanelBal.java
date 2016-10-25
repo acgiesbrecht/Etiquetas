@@ -63,6 +63,7 @@ public class PanelBal extends javax.swing.JPanel {
     String Zn = "";
     String Y = "";
     String Fe = "";
+    String Cr = "";
     String fechaElab = "";
     String fechaVenc = "";
     String senacsaReg = "";
@@ -450,6 +451,7 @@ public class PanelBal extends javax.swing.JPanel {
         Zn = myFormatterInt.format(contenido.getZn());
         Y = myFormatterInt.format(contenido.getY());
         Fe = myFormatterInt.format(contenido.getFe());
+        Cr = myFormatterInt.format(contenido.getCr());
         animalDestino = contenido.getAnimalDestino().toUpperCase();
 
         return ("Matertia Seca: " + humedadTC + " g/Kg"
@@ -601,7 +603,7 @@ public class PanelBal extends javax.swing.JPanel {
                 + "^FT643,370^A0B,24,23^FB320,1,0,R^FH\\^FDProducido por ^FS"
                 + "^FT671,370^A0B,24,23^FB320,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
                 + "^FT699,370^A0B,24,23^FB320,1,0,R^FH\\^FDAvda. Central 926 - Loma Plata^FS"
-                + "^FT727,370^A0B,24,23^FB320,1,0,R^FH\\^FDTel.: (0492) 252 301^FS"
+                + "^FT727,370^A0B,24,23^FB320,1,0,R^FH\\^FDTel.: (0492) 418 605^FS"
                 + "^FT755,370^A0B,24,23^FB320,1,0,R^FH\\^FDbalanceados@chortitzer.com.py^FS"
                 + "^PQ" + cantidad + ",0,1,Y"
                 + "^XZ";
@@ -695,6 +697,8 @@ public class PanelBal extends javax.swing.JPanel {
                 + "^FT150,856^A0N,25,24^FB250,1,0,R^FH\\^FD" + Y + " mg/Kg" + "^FS"
                 + "^FT25,885^A0N,25,24^FH\\^FD" + "Fe" + "^FS"
                 + "^FT150,885^A0N,25,24^FB250,1,0,R^FH\\^FD" + Fe + " mg/Kg" + "^FS"
+                + "^FT25,914^A0N,25,24^FH\\^FD" + "Cr" + "^FS"
+                + "^FT150,914^A0N,25,24^FB250,1,0,R^FH\\^FD" + Cr + " mg/Kg" + "^FS"
                 //+ "^FT549,1115^A0B,39,38^FH\\^FDProteina Bruta (%):^FS"
                 //+ "^FT597,1115^A0B,39,38^FH\\^FDEnergia Dig. (Kcal/Kg):^FS"
                 //+ "^FT498,656^A0B,28,28^FB200,1,0,R^FH\\^FDBase natural^FS"
@@ -732,7 +736,7 @@ public class PanelBal extends javax.swing.JPanel {
                 + "^FT412,975^A0N,24,23^FB363,1,0,R^FH\\^FDProducido por ^FS"
                 + "^FT412,1003^A0N,24,23^FB363,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
                 + "^FT412,1031^A0N,24,23^FB363,1,0,R^FH\\^FDAvda. Central 926 - Loma Plata^FS"
-                + "^FT412,1059^A0N,24,23^FB363,1,0,R^FH\\^FDTel.: (0492) 252 301^FS"
+                + "^FT412,1059^A0N,24,23^FB363,1,0,R^FH\\^FDTel.: (0492) 418 605^FS"
                 + "^FT412,1087^A0N,24,23^FB363,1,0,R^FH\\^FDbalanceados@chortitzer.com.py^FS"
                 + "^PQ" + cantidad + ",0,1,Y"
                 + "^XZ";
