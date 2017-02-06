@@ -22,6 +22,7 @@ public class PanelFps extends javax.swing.JPanel {
     public PanelFps() {
         initComponents();
         dtpFecha.setDate(new Date());
+        cboEnvase.setSelectedIndex(0);
     }
 
     /**
@@ -44,13 +45,15 @@ public class PanelFps extends javax.swing.JPanel {
         txtCantidad = new org.jdesktop.swingx.JXTextField();
         dtpFecha = new org.jdesktop.swingx.JXDatePicker();
         txtLote = new org.jdesktop.swingx.JXTextField();
-        txtNombre = new org.jdesktop.swingx.JXTextField();
         txtCodigo = new org.jdesktop.swingx.JXTextField();
         txtOC = new org.jdesktop.swingx.JXTextField();
         jLabel15 = new javax.swing.JLabel();
         txtNeto = new org.jdesktop.swingx.JXTextField();
         jLabel16 = new javax.swing.JLabel();
         txtTara = new org.jdesktop.swingx.JXTextField();
+        jLabel17 = new javax.swing.JLabel();
+        cboEnvase = new javax.swing.JComboBox<>();
+        cboNombre = new javax.swing.JComboBox<>();
 
         btnCancel.setText("CANCELAR");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -88,15 +91,25 @@ public class PanelFps extends javax.swing.JPanel {
 
         txtOC.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        jLabel15.setText("Peso Neto (Kg):");
+        jLabel15.setText("Envase:");
 
         txtNeto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtNeto.setText("190");
 
         jLabel16.setText("Peso Tara (Kg):");
 
         txtTara.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtTara.setText("18.7");
+
+        jLabel17.setText("Peso Neto (Kg):");
+
+        cboEnvase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tambor Metalico - 190 Kg", "Balde Metalico - 24 Kg", "Bidon de Plastico - 25 Kg" }));
+        cboEnvase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboEnvaseActionPerformed(evt);
+            }
+        });
+
+        cboNombre.setEditable(true);
+        cboNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDUSTRIA", "AMIGO & ARDITI SA", "VIGON  INTERNATIONAL INC.", "FIRMINICH INC." }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -112,7 +125,7 @@ public class PanelFps extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cboNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -134,18 +147,23 @@ public class PanelFps extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTara, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(txtTara, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cboEnvase, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,7 +179,7 @@ public class PanelFps extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,15 +188,19 @@ public class PanelFps extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtOC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboEnvase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,6 +216,25 @@ public class PanelFps extends javax.swing.JPanel {
         Utils.rawPrint(getZpl());
         //System.out.println(getZpl());
     }//GEN-LAST:event_btnPrintActionPerformed
+
+    private void cboEnvaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEnvaseActionPerformed
+        switch (cboEnvase.getSelectedIndex()) {
+            case 0:
+                txtNeto.setText("190");
+                txtTara.setText("18.7");
+                break;
+            case 1:
+                txtNeto.setText("24");
+                txtTara.setText("2.3");
+                break;
+            case 2:
+                txtNeto.setText("25");
+                txtTara.setText("1.6");
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_cboEnvaseActionPerformed
 
     private String getZpl() {
         String result = "";
@@ -220,8 +261,8 @@ public class PanelFps extends javax.swing.JPanel {
          "^PQ1,0,1,Y^XZ";
          */
         String sNombre = "";
-        if (!txtNombre.getText().equals("")) {
-            sNombre = "Destination: " + txtNombre.getText();
+        if (!((String) cboNombre.getSelectedItem()).equals("")) {
+            sNombre = "Destination: " + (String) cboNombre.getSelectedItem();
         }
 
         String sCode = "";
@@ -274,6 +315,8 @@ public class PanelFps extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
+    private javax.swing.JComboBox<String> cboEnvase;
+    private javax.swing.JComboBox<String> cboNombre;
     private org.jdesktop.swingx.JXDatePicker dtpFecha;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -282,12 +325,12 @@ public class PanelFps extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel9;
     private org.jdesktop.swingx.JXTextField txtCantidad;
     private org.jdesktop.swingx.JXTextField txtCodigo;
     private org.jdesktop.swingx.JXTextField txtLote;
     private org.jdesktop.swingx.JXTextField txtNeto;
-    private org.jdesktop.swingx.JXTextField txtNombre;
     private org.jdesktop.swingx.JXTextField txtOC;
     private org.jdesktop.swingx.JXTextField txtTara;
     // End of variables declaration//GEN-END:variables
