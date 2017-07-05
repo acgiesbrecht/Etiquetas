@@ -473,6 +473,7 @@ public class PanelSemillas extends javax.swing.JPanel {
         tratamiento = txtTratamiento.getText();
 
         String base = "^XA"
+                + "^MTD"
                 + "^PW799"
                 + "^CI27"
                 //+ "^FT105,958^XGE:LC100.GRF,1,1^FS"

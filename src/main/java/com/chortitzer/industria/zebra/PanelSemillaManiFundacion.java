@@ -139,6 +139,7 @@ public class PanelSemillaManiFundacion extends javax.swing.JPanel {
 
     private String getZplSmall() {
         return "^XA"
+                + "^MTD"
                 + "^PW799"
                 + //"^FT64,256^XGE:CCLOGO20.GRF,1,1^FS" +
                 //"^FO27,25^GB746,1100,1^FS" +
@@ -154,6 +155,7 @@ public class PanelSemillaManiFundacion extends javax.swing.JPanel {
     private String getZpl() {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String response = "^XA"
+                + "^MTD"
                 + "^PW799"
                 + "^FT64,256^XGE:CCLOGO20.GRF,1,1^FS"
                 + "^FO27,25^GB746,1100,1^FS"

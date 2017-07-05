@@ -114,6 +114,7 @@ public class PanelDet extends javax.swing.JPanel {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         return "^XA"
                 + "^PW799"
+                + "^MTD"
                 + "^FT64,256^XGE:CCLOGO20.GRF,1,1^FS"
                 + "^FO27,25^GB746,1100,1^FS"
                 + "^FT321,157^A0N,68,69^FB379,1,0,C^FH\\^FDDETERGENTE^FS"

@@ -101,7 +101,7 @@ public class PanelFps extends javax.swing.JPanel {
 
         jLabel17.setText("Peso Neto (Kg):");
 
-        cboEnvase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tambor Metalico - 190 Kg", "Balde Metalico - 24 Kg", "Bidon de Plastico - 25 Kg" }));
+        cboEnvase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tambor Metalico - 190 Kg", "Tambor Metalico - 50 Kg", "Balde Metalico - 24 Kg", "Bidon de Plastico - 25 Kg" }));
         cboEnvase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboEnvaseActionPerformed(evt);
@@ -224,10 +224,14 @@ public class PanelFps extends javax.swing.JPanel {
                 txtTara.setText("18.7");
                 break;
             case 1:
+                txtNeto.setText("50");
+                txtTara.setText("5.9");
+                break;
+            case 2:
                 txtNeto.setText("24");
                 txtTara.setText("2.3");
                 break;
-            case 2:
+            case 3:
                 txtNeto.setText("25");
                 txtTara.setText("1.6");
                 break;

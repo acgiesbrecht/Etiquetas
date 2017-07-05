@@ -5,7 +5,7 @@
         <class>com.chortitzer.industria.zebra.domain.lab.LabSemillasEspecies</class>
         <class>com.chortitzer.industria.zebra.domain.lab.LabSemillasCategorias</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.3.109:5432/industria_lab"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.3.121:5432/industria_lab"/>
             <property name="javax.persistence.jdbc.password" value="123456"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>

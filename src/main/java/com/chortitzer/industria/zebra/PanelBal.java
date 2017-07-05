@@ -564,6 +564,7 @@ public class PanelBal extends javax.swing.JPanel {
         //15x10cm
         //-------------------------------------------------
         String base = "^XA"
+                + "^MTD"
                 + "^PW799"
                 + "^CI27"
                 + "^FO150,30^GB625,1100,2^FS" //cuadro principal
@@ -635,6 +636,7 @@ public class PanelBal extends javax.swing.JPanel {
             senacsaReg = "";
         }
         String base = "^XA"
+                + "^MTD"
                 + "^PW799"
                 + "^CI27"
                 //+ "^FO150,30^GB625,1100,2^FS" //cuadro principal

@@ -118,6 +118,7 @@ public class PanelAceite extends javax.swing.JPanel {
         c.add(Calendar.MONTH, 6);
 
         return "^XA"
+                + "^MTD"
                 + "^PW799"
                 + //"^FT64,256^XGE:CCLOGO20.GRF,1,1^FS" +
                 //"^FO27,25^GB746,1100,1^FS" +
