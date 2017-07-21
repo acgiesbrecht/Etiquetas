@@ -54,6 +54,7 @@ public class PanelFps extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         cboEnvase = new javax.swing.JComboBox<>();
         cboNombre = new javax.swing.JComboBox<>();
+        btnPrintSmall = new javax.swing.JButton();
 
         btnCancel.setText("CANCELAR");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +64,7 @@ public class PanelFps extends javax.swing.JPanel {
         });
 
         btnPrint.setBackground(new java.awt.Color(204, 255, 204));
-        btnPrint.setText("IMPRIMIR");
+        btnPrint.setText("IMPRIMIR GRANDE");
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);
@@ -111,6 +112,14 @@ public class PanelFps extends javax.swing.JPanel {
         cboNombre.setEditable(true);
         cboNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDUSTRIA", "AMIGO & ARDITI SA", "VIGON  INTERNATIONAL INC.", "FIRMINICH INC." }));
 
+        btnPrintSmall.setBackground(new java.awt.Color(204, 255, 204));
+        btnPrintSmall.setText("IMPRIMIR PEQUEÑO");
+        btnPrintSmall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintSmallActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,10 +151,7 @@ public class PanelFps extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtLote, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dtpFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -158,7 +164,9 @@ public class PanelFps extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
-                            .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPrintSmall, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -201,10 +209,12 @@ public class PanelFps extends javax.swing.JPanel {
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPrintSmall, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -239,6 +249,25 @@ public class PanelFps extends javax.swing.JPanel {
                 break;
         }
     }//GEN-LAST:event_cboEnvaseActionPerformed
+
+    private void btnPrintSmallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintSmallActionPerformed
+        Utils.rawPrint(getZplSmall());
+    }//GEN-LAST:event_btnPrintSmallActionPerformed
+
+    private String getZplSmall() {
+        return "^XA"
+                + "^MTD"
+                + "^PW799"
+                + //"^FT64,256^XGE:CCLOGO20.GRF,1,1^FS" +
+                //"^FO27,25^GB746,1100,1^FS" +
+                "^FT590,60^A0N,30,31^FB220,1,0,L^FH\\^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
+                + "^FT590,120^A0N,30,31^FB220,1,0,L^FH\\^FDTambor: " + "001^SFAAAAAAAddd,3" + "^FS"
+                + "^FT305,60^A0N,30,31^FB220,1,0,L^FH\\^FDTambor: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
+                + "^FT305,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "002^SFAAAAAAAddd,3" + "^FS"
+                + "^FT15,60^A0N,30,31^FB220,1,0,L^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
+                + "^FT15,120^A0N,30,31^FB220,1,0,L^FH\\^FDTambor: " + "003^SFAAAAAAAddd,3" + "^FS"
+                + "^PQ" + String.valueOf(Math.round(Integer.valueOf(txtCantidad.getText()) / 3)) + ",1,0,Y^XZ";
+    }
 
     private String getZpl() {
         String result = "";
@@ -319,6 +348,7 @@ public class PanelFps extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
+    private javax.swing.JButton btnPrintSmall;
     private javax.swing.JComboBox<String> cboEnvase;
     private javax.swing.JComboBox<String> cboNombre;
     private org.jdesktop.swingx.JXDatePicker dtpFecha;

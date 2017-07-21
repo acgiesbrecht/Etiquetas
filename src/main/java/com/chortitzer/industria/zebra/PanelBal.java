@@ -509,60 +509,34 @@ public class PanelBal extends javax.swing.JPanel {
             pesoNeto = peso;
         }
 
-        senacsaReg = "SENACSA Reg. Nro.: " + txtSenacsaReg.getText();
+        senacsaReg = " - Reg. SENACSA: " + txtSenacsaReg.getText();
 
         if (txtSenacsaReg.getText().equals("XXX")) {
             senacsaReg = "";
         }
-        /*
-         15x10cm
-         -------------------------------------------------
-         String base = "^XA"
-         + "^PW799"
-         + "^CI27"
-         + "^FO150,30^GB625,1180,2^FS" //cuadro principal
-         + "^FO455,30^GB0,1180,2^FS" // 1era horiz
-         + "^FO610,30^GB0,1180,2^FS" // 2da horiz
-         + "^FO610,393^GB165,0,2^FS"
-         + "^FO610,847^GB165,0,2^FS"
-         + "^FO25,1050^XGE:LC100.GRF,1,1^FS"
-         + "^FO25,55^XGE:LB100.GRF,1,1^FS"
-         + "^FO470,50^XGE:" + animalDestino + ".GRF,1,1^FS"
-         + "^FT100,1022^A0B,71,70^FB800,1,0,C^FH\\^FD" + producto + "^FS"
-         //+ "^FO30,55^BY2^BEB,80,Y,N^FD" + fechaElabBc + lote + turno + linea + "^FS"
-         + "^FT180,1195^A0B,20,19^FB1100,1,0,L^FH\\^FD" + "INDICACIONES:" + "^FS"
-         + "^FT252,1195^A0B,20,19^FB1100,3,0,L^FH\\^FD" + txtIndicaciones.getText() + "^FS"
-         + "^FT282,1195^A0B,20,19^FB1100,1,0,L^FH\\^FD" + "COMPOSICION:" + "^FS"
-         + "^FT352,1195^A0B,20,19^FB1100,3,0,L^FH\\^FD" + txtIngredientes.getText() + "^FS"
-         + "^FT384,1195^A0B,20,19^FB1100,1,0,L^FH\\^FD" + "NIVELES DE GARANTIA:" + "^FS"
-         + "^FT456,1195^A0B,20,19^FB1100,3,0,L^FH\\^FD" + txtNiveles.getText() + "^FS"
-         + "^FT549,1195^A0B,39,38^FH\\^FDProteina Bruta (%):^FS"
-         + "^FT597,1195^A0B,39,38^FH\\^FDEnergia Dig. (Kcal/Kg):^FS"
-         + "^FT498,736^A0B,28,28^FB200,1,0,R^FH\\^FDBase natural^FS"
-         + "^FT498,911^A0B,28,28^FB200,1,0,R^FH\\^FDBase seca^FS"
-         + "^FT549,736^A0B,39,38^FB200,1,0,R^FH\\^FD" + pbTC + "^FS"
-         + "^FT597,736^A0B,39,38^FB200,1,0,R^FH\\^FD" + edTC + "^FS"
-         + "^FT549,911^A0B,39,38^FB200,1,0,R^FH\\^FD" + pbBS + "^FS"
-         + "^FT597,911^A0B,39,38^FB200,1,0,R^FH\\^FD" + edBS + "^FS"
-         + "^FT561,520^A0B,16,15^FH\\^FD*Calculo Estimativa ED:^FS"
-         + "^FT579,520^A0B,16,15^FH\\^FDNDT=PB+(EE*2,25)+ENN^FS"
-         + "^FT597,520^A0B,16,15^FH\\^FDED(Kcal/Kg)=NDT*4.409^FS"
-         + "^FT658,1195^A0B,28,28^FH\\^FDFecha Elab.: " + fechaElab + "^FS"
-         + "^FT692,1195^A0B,28,28^FH\\^FDFecha Venc.: " + fechaVenc + "^FS"
-         + "^FT726,1195^A0B,28,28^FH\\^FDLote: " + lote + "  Linea: " + linea + "  Turno: " + turno + "^FS"
-         + "^FT760,1195^A0B,28,28^FH\\^FDSecuencia: " + fechaPrint + "0001^SFAAAAAAAAAAAAAAAAAAAAAdddd,1^FS"
-         + "^FT685,847^A0B,51,50^FB454,1,0,C^FH\\^FDPeso Neto: " + peso + " Kg^FS"
-         + "^FT730,847^A0B,20,19^FB454,1,0,C^FH\\^FDSENACSA Reg. Nro.: " + senacsaReg + "^FS"
-         + "^FT754,847^A0B,20,19^FB454,1,0,C^FH\\^FDRegente Tecnico MAG Nro.: 1979^FS"
-         + "^FT643,370^A0B,24,23^FB320,1,0,R^FH\\^FDProducido por ^FS"
-         + "^FT671,370^A0B,24,23^FB320,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
-         + "^FT699,370^A0B,24,23^FB320,1,0,R^FH\\^FDAvda. Central 926 - Loma Plata^FS"
-         + "^FT727,370^A0B,24,23^FB320,1,0,R^FH\\^FDTel.: (0492) 252 301^FS"
-         + "^FT755,370^A0B,24,23^FB320,1,0,R^FH\\^FDbalanceados@chortitzer.com.py^FS"
-         + "^PQ" + cantidad + ",0,1,Y"
-         + "^XZ";*/
-        //15x10cm
-        //-------------------------------------------------
+
+        String nombreAnimalDestino = "PARA ";
+        switch (animalDestino) {
+            case "BOVINO":
+                nombreAnimalDestino += "BOVINOS";
+                break;
+            case "CABALLO":
+                nombreAnimalDestino += "EQUINOS";
+                break;
+            case "AVE":
+                nombreAnimalDestino += "AVES";
+                break;
+            case "OVINO":
+                nombreAnimalDestino += "OVINOS";
+                break;
+            case "SUINO":
+                nombreAnimalDestino += "SUINOS";
+                break;
+            default:
+                nombreAnimalDestino = "";
+                break;
+        }
+
         String base = "^XA"
                 + "^MTD"
                 + "^PW799"
@@ -576,6 +550,7 @@ public class PanelBal extends javax.swing.JPanel {
                 + "^FO25,55^XGE:LB100.GRF,1,1^FS"
                 + "^FO470,50^XGE:" + animalDestino + ".GRF,1,1^FS"
                 + "^FT100,942^A0B,71,70^FB720,1,0,C^FH\\^FD" + producto + "^FS"
+                + "^FT140,942^A0B,28,28^FB720,1,0,C^FH\\^FD" + nombreAnimalDestino + senacsaReg + "^FS"
                 //+ "^FO30,55^BY2^BEB,80,Y,N^FD" + fechaElabBc + lote + turno + linea + "^FS"
                 + "^FT180,1115^A0B,20,19^FB1020,1,0,L^FH\\^FD" + "INDICACIONES:" + "^FS"
                 + "^FT252,1115^A0B,20,19^FB1020,3,0,L^FH\\^FD" + txtIndicaciones.getText() + "^FS"
@@ -599,13 +574,14 @@ public class PanelBal extends javax.swing.JPanel {
                 + "^FT726,1115^A0B,28,28^FH\\^FDLote: " + lote + "  Linea: " + linea + "  Turno: " + turno + "^FS"
                 + "^FT760,1115^A0B,28,28^FH\\^FDSecuencia: " + fechaPrint + "0001^SFAAAAAAAAAAAAAAAAAAAAAdddd,1^FS"
                 + "^FT685,767^A0B,51,50^FB374,1,0,C^FH\\^FD" + pesoNeto + "^FS"
-                + "^FT730,767^A0B,20,19^FB374,1,0,C^FH\\^FD" + senacsaReg + "^FS"
+                //+ "^FT730,767^A0B,20,19^FB374,1,0,C^FH\\^FD" + senacsaReg + "^FS"
+                + "^FT730,767^A0B,20,19^FB374,1,0,C^FH\\^FDDr. med. vet. Kornelius Kaethler^FS"
                 + "^FT754,767^A0B,20,19^FB374,1,0,C^FH\\^FDRegente Tecnico MAG Nro.: 1979^FS"
-                + "^FT643,370^A0B,24,23^FB320,1,0,R^FH\\^FDProducido por ^FS"
-                + "^FT671,370^A0B,24,23^FB320,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
-                + "^FT699,370^A0B,24,23^FB320,1,0,R^FH\\^FDAvda. Central 926 - Loma Plata^FS"
-                + "^FT727,370^A0B,24,23^FB320,1,0,R^FH\\^FDTel.: (0492) 418 605^FS"
-                + "^FT755,370^A0B,24,23^FB320,1,0,R^FH\\^FDbalanceados@chortitzer.com.py^FS"
+                + "^FT643,370^A0B,24,23^FB320,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
+                + "^FT671,370^A0B,24,23^FB320,1,0,R^FH\\^FDHabilitacion SENACSA Nro. 832^FS"
+                + "^FT699,370^A0B,24,23^FB320,1,0,R^FH\\^FDTel.: (0492) 418 605^FS"
+                + "^FT727,370^A0B,24,23^FB320,1,0,R^FH\\^FDAvda. Central 926 - Loma Plata^FS"
+                + "^FT755,370^A0B,24,23^FB320,1,0,R^FH\\^FDINDUSTRIA PARAGUAYA^FS"
                 + "^PQ" + cantidad + ",0,1,Y"
                 + "^XZ";
         return base;
@@ -631,16 +607,40 @@ public class PanelBal extends javax.swing.JPanel {
             pesoNeto = peso;
         }
 
-        senacsaReg = txtSenacsaReg.getText();
+        senacsaReg = " - Reg. SENACSA: " + txtSenacsaReg.getText();
+
         if (txtSenacsaReg.getText().equals("XXX")) {
             senacsaReg = "";
         }
+
+        String nombreAnimalDestino = "PARA ";
+        switch (animalDestino) {
+            case "BOVINO":
+                nombreAnimalDestino += "BOVINOS";
+                break;
+            case "CABALLO":
+                nombreAnimalDestino += "EQUINOS";
+                break;
+            case "AVE":
+                nombreAnimalDestino += "AVES";
+                break;
+            case "OVINO":
+                nombreAnimalDestino += "OVINOS";
+                break;
+            case "SUINO":
+                nombreAnimalDestino += "SUINOS";
+                break;
+            default:
+                nombreAnimalDestino = "";
+                break;
+        }
+
         String base = "^XA"
                 + "^MTD"
                 + "^PW799"
                 + "^CI27"
                 //+ "^FO150,30^GB625,1100,2^FS" //cuadro principal
-                + "^FO15,150^GB775,950,2^FS" //cuadro principal
+                + "^FO15,180^GB775,920,2^FS" //cuadro principal
                 //+ "^FO455,30^GB0,1100,2^FS" // 1era horiz
                 + "^FO15,390^GB775,0,2^FS" // 1era horiz
                 + "^FO15,940^GB775,0,2^FS" // 2da horiz
@@ -653,16 +653,17 @@ public class PanelBal extends javax.swing.JPanel {
                 //+ "^FO470,50^XGE:" + animalDestino + ".GRF,1,1^FS"
                 //+ "^FT100,942^A0B,71,70^FB720,1,0,C^FH\\^FD" + producto + "^FS"
                 + "^FT200,100^A0N,71,70^FB600,1,0,C^FD" + producto + "^FS"
-                + "^FT200,130^A0N,25,24^FB600,1,0,C^FH\\^FD" + nombre_completo + "^FS"
+                + "^FT200,130^A0N,28,27^FB600,1,0,C^FH\\^FD" + nombre_completo + "^FS"
+                + "^FT200,165^A0N,25,24^FB600,1,0,C^FH\\^FD" + nombreAnimalDestino + senacsaReg + "^FS"
                 //+ "^FT180,1115^A0B,20,19^FB1020,1,0,L^FH\\^FD" + "INDICACIONES:" + "^FS"
                 //+ "^FT252,1115^A0B,20,19^FB1020,3,0,L^FH\\^FD" + txtIndicaciones.getText() + "^FS"
                 //+ "^FT282,1115^A0B,20,19^FB1020,1,0,L^FH\\^FD" + "COMPOSICION:" + "^FS"
                 //+ "^FT352,1115^A0B,20,19^FB1020,3,0,L^FH\\^FD" + txtIngredientes.getText() + "^FS"
 
-                + "^FT25,175^A0N,20,19^FB755,1,0,L^FH\\^FD" + "INDICACIONES:" + "^FS"
-                + "^FT25,271^A0N,20,19^FB755,4,0,L^FH\\^FD" + txtIndicaciones.getText() + "^FS"
-                + "^FT25,301^A0N,20,19^FB755,1,0,L^FH\\^FD" + "COMPOSICION:" + "^FS"
-                + "^FT25,349^A0N,20,19^FB755,2,0,L^FH\\^FD" + txtIngredientes.getText() + "^FS"
+                + "^FT25,205^A0N,20,19^FB755,1,0,L^FH\\^FD" + "INDICACIONES:" + "^FS"
+                + "^FT25,301^A0N,20,19^FB755,4,0,L^FH\\^FD" + txtIndicaciones.getText() + "^FS"
+                + "^FT25,331^A0N,20,19^FB755,1,0,L^FH\\^FD" + "COMPOSICION:" + "^FS"
+                + "^FT25,379^A0N,20,19^FB755,2,0,L^FH\\^FD" + txtIngredientes.getText() + "^FS"
                 //+ "^FT384,1115^A0B,20,19^FB1020,1,0,L^FH\\^FD" + "NIVELES DE GARANTIA:" + "^FS"
                 //+ "^FT456,1115^A0B,20,19^FB1020,3,0,L^FH\\^FD" + txtNiveles.getText() + "^FS"
 
@@ -726,20 +727,19 @@ public class PanelBal extends javax.swing.JPanel {
                 //+ "^FT754,767^A0B,20,19^FB374,1,0,C^FH\\^FDRegente Tecnico MAG Nro.: 1979^FS"
 
                 + "^FT422,740^A0N,51,50^FB374,1,0,C^FH\\^FD" + pesoNeto + "^FS"
-                + "^FT422,792^A0N,20,19^FB374,1,0,C^FH\\^FDSENACSA Reg. Nro. Prod.: " + senacsaReg + "^FS"
-                + "^FT422,816^A0N,20,19^FB374,1,0,C^FH\\^FDSENACSA Reg. Nro. Fabrica: " + senacsaReg + "^FS"
+                //+ "^FT422,792^A0N,20,19^FB374,1,0,C^FH\\^FDSENACSA Reg. Nro. Prod.: " + senacsaReg + "^FS"
+                //+ "^FT422,816^A0N,20,19^FB374,1,0,C^FH\\^FDSENACSA Reg. Nro. Fabrica: " + senacsaReg + "^FS"
                 + "^FT422,840^A0N,20,19^FB374,1,0,C^FH\\^FDRegente Tecnico MAG Nro.: 1979^FS"
-                + "^FT422,864^A0N,20,19^FB374,1,0,C^FH\\^FDDr. Vet. Kornelius Kaethler^FS"
-                + "^FT422,920^A0N,30,29^FB374,1,0,C^FH\\^FDINDUSTRA PARAGUAYA^FS"
+                + "^FT422,864^A0N,20,19^FB374,1,0,C^FH\\^FDDr. med. vet. Kornelius Kaethler^FS"
                 + "^FT25,980^A0N,28,28^FH\\^FDFecha Elab.: " + fechaElab + "^FS"
                 + "^FT25,1014^A0N,28,28^FH\\^FDFecha Venc.: " + fechaVenc + "^FS"
                 + "^FT25,1048^A0N,28,28^FH\\^FDLote: " + lote + "  Linea: " + linea + "  Turno: " + turno + "^FS"
                 + "^FT25,1082^A0N,28,28^FH\\^FDSecuencia: " + fechaPrint + "0001^SFAAAAAAAAAAAAAAAAAAAAAdddd,1^FS"
-                + "^FT412,975^A0N,24,23^FB363,1,0,R^FH\\^FDProducido por ^FS"
-                + "^FT412,1003^A0N,24,23^FB363,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
+                + "^FT412,975^A0N,24,23^FB363,1,0,R^FH\\^FDCooperativa Chortitzer Ltda.^FS"
+                + "^FT412,1003^A0N,24,23^FB363,1,0,R^FH\\^FDHabilitacion SENACSA Nro. 832^FS"
                 + "^FT412,1031^A0N,24,23^FB363,1,0,R^FH\\^FDAvda. Central 926 - Loma Plata^FS"
                 + "^FT412,1059^A0N,24,23^FB363,1,0,R^FH\\^FDTel.: (0492) 418 605^FS"
-                + "^FT412,1087^A0N,24,23^FB363,1,0,R^FH\\^FDbalanceados@chortitzer.com.py^FS"
+                + "^FT412,1087^A0N,24,23^FB363,1,0,R^FH\\^FDINDUSTRA PARAGUAYA^FS"
                 + "^PQ" + cantidad + ",0,1,Y"
                 + "^XZ";
         return base;

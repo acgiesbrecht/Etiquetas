@@ -50,11 +50,7 @@
                           <Component id="dtpFecha" min="-2" pref="115" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnPrint" min="-2" pref="166" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCancel" min="-2" pref="117" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnPrint" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel16" min="-2" pref="139" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -72,6 +68,8 @@
                           <Component id="txtNeto" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="btnCancel" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                  <Component id="btnPrintSmall" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
@@ -126,11 +124,12 @@
                   <Component id="txtTara" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnPrint" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="btnCancel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnPrint" min="-2" pref="31" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnPrintSmall" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnCancel" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -149,7 +148,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="IMPRIMIR"/>
+        <Property name="text" type="java.lang.String" value="IMPRIMIR GRANDE"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
@@ -266,6 +265,17 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPrintSmall">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="ff" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="IMPRIMIR PEQUE&#xd1;O"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintSmallActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
