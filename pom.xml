@@ -8,6 +8,12 @@
     <packaging>jar</packaging>
 
     <name>Etiquetas</name>
+    <scm>
+        <connection>scm:git:https://github.com/acgiesbrecht/zebra.git</connection>
+        <developerConnection>scm:git:https://github.com/acgiesbrecht/zebra.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/acgiesbrecht/zebra.git</url>
+    </scm>
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -103,6 +109,26 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <format>{0,number}</format>
+                    <items>
+                        <item>buildNumber</item>
+                    </items>
+                    <revisionOnScmFailure>unknownbuild</revisionOnScmFailure>
+                </configuration>
             </plugin>
         </plugins>
     </build>

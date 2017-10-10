@@ -8,8 +8,8 @@ package com.chortitzer.industria.zebra;
 import ca.odell.glazedlists.GlazedLists;
 import ca.odell.glazedlists.swing.AutoCompleteSupport;
 import com.chortitzer.industria.zebra.domain.bal.Formulas;
-import com.chortitzer.industria.zebra.domain.bal.Productox;
 import com.chortitzer.industria.zebra.domain.bal.TblEtiquetadoraContenido;
+import com.chortitzer.industria.zebra.domain.bal.TblProductoxConvertidores;
 import com.chortitzer.industria.zebra.util.Utils;
 import com.google.common.base.Joiner;
 import java.text.DateFormat;
@@ -371,7 +371,7 @@ public class PanelBal extends javax.swing.JPanel {
 
                 txtLote.setText(String.valueOf(lastLote + 1));
 
-                List<Productox> lProd = em.createQuery("select p from Productox p, Datosx d where p.nroID = d.idp and d.idf = " + formulaActual.getNroID().toString() + " and d.set > 0 order by d.set desc").getResultList();
+                List<TblProductoxConvertidores> lProd = em.createQuery("select p from TblProductoxConvertidores p, Datosx d where p.idProductox = d.idp and d.idf = " + formulaActual.getNroID().toString() + " and d.set > 0 order by d.set desc").getResultList();
                 txtIngredientes.setText(Joiner.on(", ").join(lProd.toArray()));
 
                 contenido = getContenido(formulaActual.getNroID().toString());
@@ -421,7 +421,7 @@ public class PanelBal extends javax.swing.JPanel {
         vitETC = myFormatterInt.format(contenido.getVitE());
         animalDestino = contenido.getAnimalDestino().toUpperCase();
 
-        return ("Matertia Seca: " + humedadTC
+        return ("Materia Seca: " + humedadTC
                 + " g/Kg, Nutrientes Digestibles Totales: " + ed
                 + " g/Kg, Proteina: " + pb
                 + " g/Kg, Grasas: " + grasaTC
@@ -454,7 +454,7 @@ public class PanelBal extends javax.swing.JPanel {
         Cr = myFormatterInt.format(contenido.getCr());
         animalDestino = contenido.getAnimalDestino().toUpperCase();
 
-        return ("Matertia Seca: " + humedadTC + " g/Kg"
+        return ("Materia Seca: " + humedadTC + " g/Kg"
                 + "Nutrientes Digestibles Totales: " + ed + " g/Kg"
                 + "Proteina: " + pb + " g/Kg"
                 + "Grasas: " + grasaTC + " g/Kg"

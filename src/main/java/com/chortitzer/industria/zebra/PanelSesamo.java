@@ -156,11 +156,11 @@ public class PanelSesamo extends javax.swing.JPanel {
                 + "^PW799"
                 + //"^FT64,256^XGE:CCLOGO20.GRF,1,1^FS" +
                 //"^FO27,25^GB746,1100,1^FS" +
-                "^FT590,60^A0N,30,31^FB220,1,0,L^FH\\^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
+                "^FT590,60^A0N,30,31^FB220,1,0,L^FH\\^FDLote: " + txtLote.getText() + "^FS"
                 + "^FT590,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "001^SFAAAAAAAddd,3" + "^FS"
-                + "^FT305,60^A0N,30,31^FB220,1,0,L^FH\\^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
+                + "^FT305,60^A0N,30,31^FB220,1,0,L^FH\\^FDLote: " + txtLote.getText() + "^FS"
                 + "^FT305,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "002^SFAAAAAAAddd,3" + "^FS"
-                + "^FT15,60^A0N,30,31^FB220,1,0,L^FDLote: " + String.format("%04d", Integer.valueOf(txtLote.getText())) + "^FS"
+                + "^FT15,60^A0N,30,31^FB220,1,0,L^FDLote: " + txtLote.getText() + "^FS"
                 + "^FT15,120^A0N,30,31^FB220,1,0,L^FH\\^FDBolsa: " + "003^SFAAAAAAAddd,3" + "^FS"
                 + "^PQ" + String.valueOf(Math.round(Integer.valueOf(txtCantidad.getText()) / 3)) + ",1,0,Y^XZ";
     }

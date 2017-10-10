@@ -6,7 +6,10 @@
 package com.chortitzer.industria.zebra;
 
 import java.awt.BorderLayout;
+import java.io.InputStream;
+import java.util.Properties;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,7 +22,15 @@ public class FormMdi extends javax.swing.JFrame {
      * Creates new form FormMdi
      */
     public FormMdi() {
-        initComponents();
+        try {
+            initComponents();
+            InputStream resourceAsStream = this.getClass().getResourceAsStream("/version.properties");
+            Properties prop = new Properties();
+            prop.load(resourceAsStream);
+            setTitle("Etiquetas " + prop.getProperty("project.version") + "." + prop.getProperty("project.build"));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, Thread.currentThread().getStackTrace()[1].getMethodName() + " - " + ex.getMessage());
+        }
     }
 
     /**

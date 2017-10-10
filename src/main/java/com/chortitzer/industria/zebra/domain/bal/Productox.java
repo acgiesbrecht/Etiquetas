@@ -8,6 +8,7 @@ package com.chortitzer.industria.zebra.domain.bal;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -44,6 +46,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Productox.findByVisible", query = "SELECT p FROM Productox p WHERE p.visible = :visible"),
     @NamedQuery(name = "Productox.findByCodigo", query = "SELECT p FROM Productox p WHERE p.codigo = :codigo")})
 public class Productox implements Serializable {
+
+    @Column(name = "Dos5")
+    private Short dos5;
+    @Column(name = "Dos6")
+    private Short dos6;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productox")
+    private TblProductoxConvertidores tblProductoxConvertidores;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -240,6 +249,30 @@ public class Productox implements Serializable {
     @Override
     public String toString() {
         return nombre;
+    }
+
+    public Short getDos5() {
+        return dos5;
+    }
+
+    public void setDos5(Short dos5) {
+        this.dos5 = dos5;
+    }
+
+    public Short getDos6() {
+        return dos6;
+    }
+
+    public void setDos6(Short dos6) {
+        this.dos6 = dos6;
+    }
+
+    public TblProductoxConvertidores getTblProductoxConvertidores() {
+        return tblProductoxConvertidores;
+    }
+
+    public void setTblProductoxConvertidores(TblProductoxConvertidores tblProductoxConvertidores) {
+        this.tblProductoxConvertidores = tblProductoxConvertidores;
     }
     
 }
