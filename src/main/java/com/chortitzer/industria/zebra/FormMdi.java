@@ -54,6 +54,7 @@ public class FormMdi extends javax.swing.JFrame {
         mnuSesamo = new javax.swing.JMenuItem();
         mnuMungR = new javax.swing.JMenuItem();
         mnuMungP = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -159,6 +160,14 @@ public class FormMdi extends javax.swing.JFrame {
         });
         mnuMain.add(mnuMungP);
 
+        jMenuItem2.setText("Algodon");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        mnuMain.add(jMenuItem2);
+
         menuBar.add(mnuMain);
 
         setJMenuBar(menuBar);
@@ -243,6 +252,11 @@ public class FormMdi extends javax.swing.JFrame {
         addFrame(panel, "Semilla Mani Fundacion");
     }//GEN-LAST:event_mnuSya1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        PanelAlgodon panel = new PanelAlgodon();
+        addFrame(panel, "Algodon");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public void addFrame(JPanel panel, String title) {
         try {
             JInternalFrame[] children = desktopPane.getAllFrames();
@@ -306,6 +320,7 @@ public class FormMdi extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnuBal;
     private javax.swing.JMenuItem mnuDet;

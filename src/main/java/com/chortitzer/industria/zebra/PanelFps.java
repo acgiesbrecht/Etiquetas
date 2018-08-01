@@ -231,7 +231,7 @@ public class PanelFps extends javax.swing.JPanel {
         switch (cboEnvase.getSelectedIndex()) {
             case 0:
                 txtNeto.setText("190");
-                txtTara.setText("18.7");
+                txtTara.setText("15.5");
                 break;
             case 1:
                 txtNeto.setText("50");
