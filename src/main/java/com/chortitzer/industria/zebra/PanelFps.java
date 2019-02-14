@@ -102,7 +102,7 @@ public class PanelFps extends javax.swing.JPanel {
 
         jLabel17.setText("Peso Neto (Kg):");
 
-        cboEnvase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tambor Metalico - 190 Kg", "Tambor Metalico - 50 Kg", "Balde Metalico - 24 Kg", "Bidon de Plastico - 25 Kg" }));
+        cboEnvase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tambor Metalico - 190 Kg - 15.5Kg Tara", "Tambor Metalico - 190 Kg - 18.6Kg Tara", "Tambor Metalico - 50 Kg", "Balde Metalico - 24 Kg", "Bidon de Plastico - 25 Kg" }));
         cboEnvase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboEnvaseActionPerformed(evt);
@@ -110,7 +110,7 @@ public class PanelFps extends javax.swing.JPanel {
         });
 
         cboNombre.setEditable(true);
-        cboNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDUSTRIA", "AMIGO & ARDITI SA", "VIGON  INTERNATIONAL INC.", "FIRMINICH INC." }));
+        cboNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDUSTRIA", "AMIGO & ARDITI SA", "VIGON  INTERNATIONAL INC.", "FIRMINICH INC.", "BIOLANDES", "JOH. VOEGELE KG" }));
 
         btnPrintSmall.setBackground(new java.awt.Color(204, 255, 204));
         btnPrintSmall.setText("IMPRIMIR PEQUEÑO");
@@ -167,7 +167,7 @@ public class PanelFps extends javax.swing.JPanel {
                             .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrintSmall, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,14 +234,18 @@ public class PanelFps extends javax.swing.JPanel {
                 txtTara.setText("15.5");
                 break;
             case 1:
+                txtNeto.setText("190");
+                txtTara.setText("18.6");
+                break;
+            case 2:
                 txtNeto.setText("50");
                 txtTara.setText("5.9");
                 break;
-            case 2:
+            case 3:
                 txtNeto.setText("24");
                 txtTara.setText("2.3");
                 break;
-            case 3:
+            case 4:
                 txtNeto.setText("25");
                 txtTara.setText("1.6");
                 break;

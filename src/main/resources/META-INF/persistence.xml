@@ -5,7 +5,7 @@
         <class>com.chortitzer.industria.zebra.domain.lab.LabSemillasEspecies</class>
         <class>com.chortitzer.industria.zebra.domain.lab.LabSemillasCategorias</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.3.121:5432/industria_lab"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.116.117:5432/industria_lab"/>
             <property name="javax.persistence.jdbc.password" value="123456"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
@@ -19,7 +19,7 @@
         <class>com.chortitzer.industria.zebra.domain.bal.TblProductoxConvertidores</class>
         <class>com.chortitzer.industria.zebra.domain.bal.Formulas</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.3.114:3306/dbcp8100?zeroDateTimeBehavior=convertToNull"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.163.11:3306/dbcp8100?zeroDateTimeBehavior=convertToNull"/>
             <property name="javax.persistence.jdbc.password" value="delfines"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="delfines"/>
@@ -30,7 +30,7 @@
         <class>com.chortitzer.industria.zebra.domain.fps.TblFpsLotes</class>
         <class>com.chortitzer.industria.zebra.domain.fps.TblFpsTambores</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.3.123:5432/caldera"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.163.30:5432/caldera"/>
             <property name="javax.persistence.jdbc.password" value="postgres"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
